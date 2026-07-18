@@ -24,19 +24,19 @@ requirements:
     - {{ stdlib("c") }}
     - cmake =3.29.6
     - make =4.4.1  # [unix]
-    - xeus =6.0.0       # [build_platform != target_platform]
+    - xeus =6.0.1       # [build_platform != target_platform]
     - xeus-zmq =4.0.0   # [build_platform != target_platform]
     - llvmdev =19.1.1   # [build_platform != target_platform]
-    - nlohmann_json =3.11.3     # [build_platform != target_platform]
+    - nlohmann_json =3.12.0     # [build_platform != target_platform]
     - zlib              # [build_platform != target_platform]
     - zstd-static =1.5.6  # [build_platform != target_platform]
     - nodejs
   host:
-    - xeus =6.0.0
+    - xeus =6.0.1
     - xeus-zmq =4.0.0
     - llvmdev =19.1.1
     - libunwind =1.7.2  # [linux]
-    - nlohmann_json =3.11.3
+    - nlohmann_json =3.12.0
     - zlib
     - zstd-static =1.5.6
   run:
