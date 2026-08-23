@@ -14,7 +14,7 @@ source:
     folder: emsdk
 
 build:
-  number: 2
+  number: 1
 
 requirements:
   build:
@@ -29,7 +29,7 @@ requirements:
     - llvmdev =19.1.1   # [build_platform != target_platform]
     - nlohmann_json =3.12.0     # [build_platform != target_platform]
     - zlib              # [build_platform != target_platform]
-    - zstd-static =1.5.6  # [build_platform != target_platform]
+    - zstd-static =1.5.7  # [build_platform != target_platform]
     - nodejs
   host:
     - xeus =6.0.1
@@ -38,14 +38,14 @@ requirements:
     - libunwind =1.7.2  # [linux]
     - nlohmann_json =3.12.0
     - zlib
-    - zstd-static =1.5.6
+    - zstd-static =1.5.7
   run:
     # lfortran invokes `clang` at run time to link object files
     - clang
     # xeus breaks abi compatibility in patch versions even though
     # run_exports say otherwise in https://github.com/conda-forge/xeus-feedstock/blob/0896038be810da2944ebcb612e22886815ea691e/recipe/meta.yaml#L18
     - {{ pin_compatible("xeus", max_pin="x.x.x") }}  # [win]
-    - zstd =1.5.6  # [win]
+    - zstd =1.5.7  # [win]
 
 test:
   requires:
