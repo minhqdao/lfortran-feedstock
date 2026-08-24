@@ -26,7 +26,7 @@ requirements:
     - make =4.4.1  # [unix]
     - xeus =6.0.1       # [build_platform != target_platform]
     - xeus-zmq =4.0.0   # [build_platform != target_platform]
-    - llvmdev >=21.1.7,<21.2.0a0   # [build_platform != target_platform]
+    - llvmdev =21.1.7   # [build_platform != target_platform]
     - nlohmann_json =3.12.0     # [build_platform != target_platform]
     - zlib              # [build_platform != target_platform]
     - zstd-static =1.5.7  # [build_platform != target_platform]
@@ -34,14 +34,14 @@ requirements:
   host:
     - xeus =6.0.1
     - xeus-zmq =4.0.0
-    - llvmdev >=21.1.7,<21.2.0a0
+    - llvmdev =21.1.7
     - libunwind =1.7.2  # [linux]
     - nlohmann_json =3.12.0
     - zlib
     - zstd-static =1.5.7
   run:
     # lfortran invokes `clang` at run time to link object files
-    - clang
+    - clang =21.1.7
     # xeus breaks abi compatibility in patch versions even though
     # run_exports say otherwise in https://github.com/conda-forge/xeus-feedstock/blob/0896038be810da2944ebcb612e22886815ea691e/recipe/meta.yaml#L18
     - {{ pin_compatible("xeus", max_pin="x.x.x") }}  # [win]
