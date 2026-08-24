@@ -35,11 +35,21 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == 1 ]]; then
 
     mkdir build-native
     cd build-native
+
+    # Override cross-compilation find-root settings so the native build
+    # searches BUILD_PREFIX (build-machine arch) instead of $PREFIX
+    # (target/host architecture). Without this, find_library picks up
+    # target-arch libraries from the host prefix and the linker reports
+    # "file in wrong format".
     cmake ${CMAKE_ARGS} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_FLAGS_RELEASE="-Wall -Wextra -O3 -funroll-loops -DNDEBUG" \
         -DCMAKE_INSTALL_PREFIX=$BUILD_PREFIX \
         -DCMAKE_PREFIX_PATH=$BUILD_PREFIX \
+        -DCMAKE_FIND_ROOT_PATH=$BUILD_PREFIX \
+        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
+        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
+        -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH \
         -DWITH_LLVM=yes \
         -DWITH_LLVM_STACKTRACE=no \
         -DWITH_LSP=yes \
