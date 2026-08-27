@@ -8,6 +8,11 @@ package:
 source:
   - url: https://github.com/lfortran/lfortran/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
     sha256: 2be0b3806a18c15b55083fecd9930c5e9188832a01ed2b91614315939e705fb2
+    patches:
+      # Fixes the WASM runtime cross-compile: lfortran_intrinsics.c includes
+      # the CMake-generated <libasr/config.h>, but the emcc command line was
+      # missing the build-tree include dir. To be upstreamed into LFortran.
+      - patches/0001-cmake-add-generated-header-dir-to-wasm-runtime-includes.patch
   - git_url: https://github.com/emscripten-core/emsdk.git
     # This must be in sync with build.sh:
     git_rev: 3.1.59
