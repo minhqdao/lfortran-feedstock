@@ -71,6 +71,7 @@ test:
     - lfortran --help
     - lfortran --version
     - echo "print *, 'Hello'; end" > hello.f90 && lfortran hello.f90 && ./hello.out   # [unix]
+    - echo print *, 'Hello'; end > hello.f90 && lfortran hello.f90 -o hello.exe && hello.exe  # [win]
     - jupyter kernelspec list --json
       # This fails if the `fortran` spec is not installed
     - jupyter kernelspec remove -f fortran
