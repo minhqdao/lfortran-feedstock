@@ -65,6 +65,7 @@ requirements:
 test:
   requires:
     - jupyter
+    - vs2022_win-64  # [win]
   commands:
     - test -f ${PREFIX}/bin/lfortran  # [unix]
     - if not exist %LIBRARY_PREFIX%\bin\lfortran.exe exit 1  # [win]
