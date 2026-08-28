@@ -1,5 +1,6 @@
 {% set name = "lfortran" %}
 {% set version = "0.65.0" %}
+{% set llvm_version = "21.1.7" %}
 
 package:
   name: {{ name|lower }}
@@ -30,7 +31,7 @@ requirements:
     - make =4.4.1  # [unix]
     - xeus =6.0.1       # [build_platform != target_platform]
     - xeus-zmq =4.0.0   # [build_platform != target_platform]
-    - llvmdev =21.1.7   # [build_platform != target_platform]
+    - llvmdev ={{ llvm_version }}   # [build_platform != target_platform]
     - nlohmann_json =3.12.0     # [build_platform != target_platform]
     - zlib              # [build_platform != target_platform]
     - zstd-static =1.5.7  # [build_platform != target_platform]
@@ -39,7 +40,7 @@ requirements:
   host:
     - xeus =6.0.1
     - xeus-zmq =4.0.0
-    - llvmdev =21.1.7
+    - llvmdev ={{ llvm_version }}
     - libunwind =1.7.2  # [linux]
     - nlohmann_json =3.12.0
     - zlib
